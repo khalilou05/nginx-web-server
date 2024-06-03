@@ -2,8 +2,7 @@
 services:
   nginx:
     image: nginx
-    networks:
-      - main
+
     depends_on:
       - frontend
     restart: always
@@ -11,8 +10,7 @@ services:
 
   frontend:
     build: ../frontend
-    networks:
-      - main
+
     depends_on:
       - backend
 
@@ -20,8 +18,7 @@ services:
 
   backend:
     build: ../backend
-    networks:
-      - main
+
     depends_on:
       - database
     restart: always
@@ -29,8 +26,7 @@ services:
 
   database:
     image: postgres
-    networks:
-      - main
+
     environment:
       - POSTGRES_PASSWORD=khalil
       - POSTGRES_USER=khalil
@@ -41,5 +37,5 @@ services:
 
 
 networks:
-  main:
+  default:
     driver: host
