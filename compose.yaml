@@ -39,6 +39,3 @@ services:
 
     restart: always
 
-networks:
-  default:
-    driver: bridge
