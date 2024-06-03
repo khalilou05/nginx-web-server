@@ -2,13 +2,13 @@
 services:
 
   database:
-  image: postgres
-  network_mode: "host"
-  environment:
-    - POSTGRES_PASSWORD=khalil
-    - POSTGRES_USER=khalil
-    - POSTGRES_DB=khail
-  restart: always
+    image: postgres
+    network_mode: "host"
+    environment:
+      - POSTGRES_PASSWORD=khalil
+      - POSTGRES_USER=khalil
+      - POSTGRES_DB=khail
+    restart: always
 
 
   backend:
