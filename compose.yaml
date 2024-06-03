@@ -3,34 +3,34 @@ services:
   nginx:
     image: nginx
     networks:
-      -main
+      - main
     depends_on:
-      -frontend
+      - frontend
     restart: always
 
 
   frontend:
     build: ../frontend
     networks:
-      -main
+      - main
     depends_on:
-      -backend
+      - backend
 
     restart: always
 
   backend:
     build: ../backend/app/
     networks:
-      -main
+      - main
     depends_on:
-      -database
+      - database
     restart: always
 
 
   database:
     image: postgres
     networks:
-      -main
+      - main
     environment:
       - POSTGRES_PASSWORD=khalil
       - POSTGRES_USER=khalil
