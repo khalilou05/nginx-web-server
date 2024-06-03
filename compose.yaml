@@ -1,7 +1,4 @@
-
 services:
-
-
   database:
     image: postgres
     shm_size: 128mb
@@ -14,40 +11,23 @@ services:
     build: ../backend
     network_mode: host
     depends_on:
-      database:
-        condition: service_started
+      - database
     restart: always
 
-    
   frontend:
     build: ../frontend
     network_mode: host
     depends_on:
-      database:
-        condition: service_started
-      backend:
-        condition: service_started
-
+      - database
+      - backend
 
     restart: always
 
   nginx:
     build: .
     network_mode: host
-    depends_on:
-      frontend:
-        condition: service_started
-      backend:
-        condition: service_started
-      database:
-        condition: service_started
+      - frontend
+      - backend
+      - database
 
     restart: always
-
-
-
-
-
-
-    
-
