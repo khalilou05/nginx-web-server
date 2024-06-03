@@ -4,36 +4,36 @@ services:
   database:
     image: postgres
     network_mode: "host"
+    shm_size: 128mb
     environment:
       - POSTGRES_PASSWORD=khalil
-      - POSTGRES_USER=khalil
-      - POSTGRES_DB=khail
+
     restart: always
 
 
-  # backend:
-  #   build: ../backend
-  #   network_mode: "host"
-  #   depends_on:
-  #     - database
-  #   restart: always
+  backend:
+    build: ../backend
+    network_mode: "host"
+    depends_on:
+      - database
+    restart: always
 
     
-  # frontend:
-  #   build: ../frontend
-  #   network_mode: "host"
-  #   depends_on:
-  #     - backend
+  frontend:
+    build: ../frontend
+    network_mode: "host"
+    depends_on:
+      - backend
 
-  #   restart: always
+    restart: always
 
-  # nginx:
-  #   image: nginx
-  #   network_mode: "host"
-  #   depends_on:
-  #     - frontend
-  #     - backend
-  #   restart: always
+  nginx:
+    image: nginx
+    network_mode: "host"
+    depends_on:
+      - frontend
+      - backend
+    restart: always
 
 
 
