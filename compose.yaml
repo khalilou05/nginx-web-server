@@ -1,28 +1,28 @@
 
 services:
-  # nginx:
-  #   image: nginx
-  #   network_mode: "host"
-  #   depends_on:
-  #     - frontend
-  #     - backend
-  #   restart: always
+  nginx:
+    image: nginx
+    network_mode: "host"
+    depends_on:
+      - frontend
+      - backend
+    restart: always
 
 
-  # frontend:
-  #   build: ../frontend
-  #   network_mode: "host"
-  #   depends_on:
-  #     - backend
+  frontend:
+    build: ../frontend
+    network_mode: "host"
+    depends_on:
+      - backend
 
-  #   restart: always
+    restart: always
 
-  # backend:
-  #   build: ../backend
-  #   network_mode: "host"
-  #   depends_on:
-  #     - database
-  #   restart: always
+  backend:
+    build: ../backend
+    network_mode: "host"
+    depends_on:
+      - database
+    restart: always
 
 
   database:
