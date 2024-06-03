@@ -2,7 +2,7 @@
 services:
   nginx:
     image: nginx
-
+    network_mode: "host"
     depends_on:
       - frontend
     restart: always
@@ -10,7 +10,7 @@ services:
 
   frontend:
     build: ../frontend
-
+    network_mode: "host"
     depends_on:
       - backend
 
@@ -18,7 +18,7 @@ services:
 
   backend:
     build: ../backend
-
+    network_mode: "host"
     depends_on:
       - database
     restart: always
@@ -26,7 +26,7 @@ services:
 
   database:
     image: postgres
-
+    network_mode: "host"
     environment:
       - POSTGRES_PASSWORD=khalil
       - POSTGRES_USER=khalil
