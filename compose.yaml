@@ -7,11 +7,14 @@ services:
     shm_size: 128mb
     environment:
       - POSTGRES_PASSWORD=khalil
-    condition: service_started
     restart: always
 
   backend:
     build: ../backend
+    depends_on:
+      database:
+        condition: service_started
+    
     restart: always
 
     
@@ -23,8 +26,7 @@ services:
     restart: always
 
   nginx:
-    image: nginx
-
+    build: .
     depends_on:
       - frontend
       - backend
