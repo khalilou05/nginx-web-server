@@ -1,5 +1,32 @@
 
 services:
+
+  database:
+  image: postgres
+  network_mode: "host"
+  environment:
+    - POSTGRES_PASSWORD=khalil
+    - POSTGRES_USER=khalil
+    - POSTGRES_DB=khail
+  restart: always
+
+
+  backend:
+    build: ../backend
+    network_mode: "host"
+    depends_on:
+      - database
+    restart: always
+
+    
+  frontend:
+    build: ../frontend
+    network_mode: "host"
+    depends_on:
+      - backend
+
+    restart: always
+
   nginx:
     image: nginx
     network_mode: "host"
@@ -9,30 +36,10 @@ services:
     restart: always
 
 
-  frontend:
-    build: ../frontend
-    network_mode: "host"
-    depends_on:
-      - backend
-
-    restart: always
-
-  backend:
-    build: ../backend
-    network_mode: "host"
-    depends_on:
-      - database
-    restart: always
 
 
-  database:
-    image: postgres
-    network_mode: "host"
-    environment:
-      - POSTGRES_PASSWORD=khalil
-      - POSTGRES_USER=khalil
-      - POSTGRES_DB=khail
 
-    restart: always
+
+
     
 
