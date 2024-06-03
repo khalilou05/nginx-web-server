@@ -1,0 +1,45 @@
+
+services:
+  nginx:
+    image: nginx
+    networks:
+      -main
+    depends_on:
+      -frontend
+    restart: always
+
+
+  frontend:
+    build: ../frontend
+    networks:
+      -main
+    depends_on:
+      -backend
+
+    restart: always
+
+  backend:
+    build: ../backend/app/
+    networks:
+      -main
+    depends_on:
+      -database
+    restart: always
+
+
+  database:
+    image: postgres
+    networks:
+      -main
+    environment:
+      - POSTGRES_PASSWORD=khalil
+      - POSTGRES_USER=khalil
+      - POSTGRES_DB=khail
+
+    restart: always
+    
+
+
+networks:
+  main:
+    driver: host
