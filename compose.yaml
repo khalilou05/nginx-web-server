@@ -5,6 +5,7 @@ services:
     network_mode: "host"
     depends_on:
       - frontend
+      - backend
     restart: always
 
 
@@ -35,7 +36,3 @@ services:
     restart: always
     
 
-
-networks:
-  default:
-    driver: host
