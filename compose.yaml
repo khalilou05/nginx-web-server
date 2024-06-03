@@ -14,8 +14,8 @@ services:
     build: ../backend
     network_mode: host
     depends_on:
-      database:
-        condition: service_started
+     - database
+
         
     restart: always
 
