@@ -14,9 +14,8 @@ services:
     build: ../backend
     network_mode: host
     depends_on:
-     - database
-
-        
+      database:
+        condition: service_healthy
     restart: always
 
     
@@ -24,8 +23,11 @@ services:
     build: ../frontend
     network_mode: host
     depends_on:
-      - backend
-      - database
+      database:
+        condition: service_healthy
+      backend:
+        condition: service_healthy
+
 
     restart: always
 
@@ -33,9 +35,12 @@ services:
     build: .
     network_mode: host
     depends_on:
-      - frontend
-      - backend
-      - database
+      frontend:
+        condition: service_healthy
+      backend:
+        condition: service_healthy
+      database:
+        condition: service_healthy
 
     restart: always
 
