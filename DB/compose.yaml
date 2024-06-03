@@ -1,9 +1,0 @@
-services:
-
-    database:
-      image: postgres
-      network_mode: "host"
-      shm_size: 128mb
-      environment:
-        - POSTGRES_PASSWORD=khalil
-      restart: always
