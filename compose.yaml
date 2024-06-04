@@ -12,7 +12,6 @@ services:
     restart: always
     depends_on:
       - database
-      - frontend
 
   frontend:
     build: ../frontend
@@ -20,10 +19,13 @@ services:
     restart: always
     depends_on:
       - database
+      - backend
 
   
   nginx:
     build: .
     network_mode: host
     restart: always
+    depends_on:
+      - frontend
 
