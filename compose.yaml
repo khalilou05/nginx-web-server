@@ -6,8 +6,6 @@ services:
     environment:
       - POSTGRES_PASSWORD=khalil
     restart: always
-    ports:
-      - 5432:5432
 
   backend:
     build: ../backend
@@ -15,8 +13,7 @@ services:
     depends_on:
       - database
     restart: always
-    ports:
-      - 8000:8000
+
 
   frontend:
     build: ../frontend
@@ -24,8 +21,6 @@ services:
     depends_on:
       - database
       - backend
-    ports:
-      - 3000:3000
 
     restart: always
 
