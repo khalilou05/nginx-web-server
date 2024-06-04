@@ -6,13 +6,22 @@ services:
       - POSTGRES_PASSWORD=khalil
     restart: always
 
-
+  backend:
+    build: ../backend
+    network_mode: host
+    restart: always
+    depends_on:
+      - database
+      - frontend
 
   frontend:
     build: ../frontend
     network_mode: host
     restart: always
+    depends_on:
+      - database
 
+  
   nginx:
     build: .
     network_mode: host
