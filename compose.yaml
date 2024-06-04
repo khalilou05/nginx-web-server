@@ -11,6 +11,7 @@ services:
     network_mode: host
     depends_on:
       - database
+      - frontend
     restart: always
 
 
@@ -19,7 +20,6 @@ services:
     network_mode: host
     depends_on:
       - database
-      - backend
 
     restart: always
 
