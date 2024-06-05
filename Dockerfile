@@ -3,9 +3,9 @@ FROM nginx
 COPY nginx.conf /etc/nginx/
 
 RUN apt-get update && \
-apt-get install -y snapd  && \
-apt-get install -y --classic certbot  && \
-ln -s /snap/bin/certbot /usr/bin/certbot
+apt-get install snapd -y  && \
+apt-get install --classic certbot -y
 
 
-CMD certbot certonly --nginx
+
+CMD certbot certonly --nginx && ln -s /snap/bin/certbot /usr/bin/certbot -g daemon off
