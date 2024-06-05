@@ -2,7 +2,7 @@ FROM nginx
 
 COPY nginx.conf /etc/nginx/
 
-RUN apt install snapd
+RUN apt-get install snapd -y
 
 RUN snap install --classic certbot
 
