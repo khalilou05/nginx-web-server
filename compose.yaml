@@ -4,6 +4,12 @@ services:
     network_mode: host
     environment:
       - POSTGRES_PASSWORD=khalil
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 1m30s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
     restart: always
 
   backend:
@@ -12,7 +18,7 @@ services:
     restart: always
     depends_on:
       database:
-        condition: service_completed_successfully
+        condition: service_healthy
 
   frontend:
     build: ../frontend
