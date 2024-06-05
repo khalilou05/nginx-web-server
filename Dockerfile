@@ -4,7 +4,7 @@ COPY nginx.conf /etc/nginx/
 
 RUN apt-get update && \
 apt-get install snapd -y  && \
-apt-get install --classic certbot -y
+apt-get install --classic certbot 
 
 
 
