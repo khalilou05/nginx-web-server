@@ -35,4 +35,11 @@ services:
     restart: always
     depends_on:
       - frontend
+    volumes:
+      - ecomapp:/etc/nginx
+
+
+volumes:
+  ecomapp:
+    driver: local
 
