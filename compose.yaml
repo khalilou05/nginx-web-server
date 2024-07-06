@@ -29,17 +29,4 @@ services:
       - backend
 
   
-  nginx:
-    build: .
-    network_mode: host
-    restart: always
-    depends_on:
-      - frontend
-    volumes:
-      - ecomapp:/etc/nginx
-
-
-volumes:
-  ecomapp:
-    driver: local
 
